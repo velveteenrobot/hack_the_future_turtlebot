@@ -1,0 +1,5 @@
+Instructions:
+
+1. Copy sample code of turtlebot_teleop1.html in a text editor (Notepad, Word, Vim). Save as turtlebot_teleop1.html
+2. Get the name (IP Address) of a turtlebot and put that in instead of ROBOT_NAME
+3. Open the filfe you made in Google Chrome
