@@ -1,0 +1,16 @@
+On the ROS wiki see: 
+http://www.ros.org/wiki/roslibjs/Tutorials/BasicRosFunctionality
+http://www.ros.org/wiki/mjpeg_server
+
+On the turtlebot:
+- roslaunch turtlebot_bringup minimal.launch
+- roslaunch turtlebot_bringup 3dsensor.launch 
+- roslaunch rosbridge_server rosbridge_websocket.launch
+- rosrun mjpeg_server mjpeg_server _port:=9191
+
+In html file: 
+- replace URL with turtlebot URL or hostname
+- open html file in browser
+- if necessary open developer console
+
+This activity should stream video and allow people to drive the robot using the keyboard arrow keys. Pressing the snapshot button will freeze the current video frame. Usually we start off with streaming video. And then add logic for moving the turtlebot with just the forward arrow and then build on that. Sometimes it works better to give them broken driving code (aka the arrow buttons move the wrong directions). Adding the arrow keys picture or other pictures is optional as is the freeze frame functionality.
