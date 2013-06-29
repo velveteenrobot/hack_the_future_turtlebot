@@ -1,9 +1,12 @@
+var server = '192.168.2.5';
+
 // Load main.css
 function load_main_css() {
     var fileref = document.createElement("link");
     fileref.setAttribute("rel", "stylesheet");
     fileref.setAttribute("type", "text/css");
-    fileref.setAttribute("href", "/css/main.css");
+    loc = "http://" + server + "/css/main.css";
+    fileref.setAttribute("href", loc);
     document.getElementsByTagName("head")[0].appendChild(fileref);
 
     fileref.onreadystatechange = load_norm_css;
@@ -15,7 +18,8 @@ function load_norm_css() {
     var fileref = document.createElement("link");
     fileref.setAttribute("rel", "stylesheet");
     fileref.setAttribute("type", "text/css");
-    fileref.setAttribute("href", "/css/normalize.css");
+    loc = "http://" + server + "/css/normalize.css";
+    fileref.setAttribute("href", loc);
     document.getElementsByTagName("head")[0].appendChild(fileref);
 
     fileref.onreadystatechange = load_eventemitter2;
@@ -26,7 +30,8 @@ function load_norm_css() {
 function load_eventemitter2() {
     var fileref = document.createElement('script');
     fileref.setAttribute("type", "text/javascript");
-    fileref.setAttribute("src", "/js/vendor/eventemitter2.min.js");
+    loc = "http://" + server + "/js/vendor/eventemitter2.min.js";
+    fileref.setAttribute("src", loc);
     document.getElementsByTagName("head")[0].appendChild(fileref);
 
     fileref.onreadystatechange = load_roslib;
@@ -37,7 +42,8 @@ function load_eventemitter2() {
 function load_roslib() {
     var fileref = document.createElement('script');
     fileref.setAttribute("type", "text/javascript");
-    fileref.setAttribute("src", "/js/vendor/roslib.min.js");
+    loc = "http://" + server + "/js/vendor/roslib.min.js";
+    fileref.setAttribute("src", loc);
     document.getElementsByTagName("head")[0].appendChild(fileref);
 
     fileref.onreadystatechange = load_robot;
@@ -50,7 +56,9 @@ var robot = {};
 // Setup the robot
 function load_robot() {
     // Create ROS context
-    robot._ros = new ROSLIB.Ros({url : 'ws://' + location.host + ':9090'});
+    addr = 'ws://' + server + ':9090';
+    console.log('Connecting to ROS at ' + addr);
+    robot._ros = new ROSLIB.Ros({url : addr});
 
     // Create cmd_vel publisher
     robot._cmd_vel_publisher = new ROSLIB.Topic({
