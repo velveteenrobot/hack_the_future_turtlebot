@@ -67,6 +67,23 @@ function load_robot() {
         messageType : 'geometry_msgs/Twist'
     });
 
+    // Create bumper subscriber
+    robot._bump_event = new ROSLIB.Topic({
+        ros : robot._ros,
+        name : '/mobile_base/events/bumper',
+        messageType : 'kobuki_msgs/BumperEvent'
+    })
+    robot._bump_event.subscribe(function (msg) {
+        console.log('Received message on ' + listener.name + ': ' + msg.state);
+        var bumpers = new Array();
+        bumpers[0] = "left";
+        bumpers[1] = "center";
+        bumpers[2] = "right";
+        if (robot.onbump !== undefined) {
+            robot.onbump(bumpers[msg.bumper], msg.state == 1);
+        }
+    })
+
     // Function to move the turtlebot
     robot.move = function (linear, angular) {
         console.log('Moving robot: [' + linear + ', ' + angular + ']');
