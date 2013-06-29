@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Template</title>
+        <!-- Replace localhost with the IP of your turtlebot -->
+        <script src="http://192.168.2.5/js/turtlebot.js"></script>
+        <script type="text/javascript" type="text/javascript">
+            robot.onload = function () {
+/********************************/
+/* Here is where your code goes */
+/********************************/
+                var forward = 0;
+                var turn = 0;
+                robot.onUpKeyDown = function () {
+                    forward = 0.5;
+                };
+                robot.onDownKeyDown = function () {
+                    forward = -0.5;
+                };
+                robot.onLeftKeyDown = function () {
+                    angular = 1;
+                };
+                robot.onRightKeyDown = function () {
+                    angular = -1;
+                };
+                robot.onKeyUp = function (key) {
+                    if (key == 38 || key == 40) {
+                        forward = 0;
+                    }
+                    if (key == 37 || key == 39) {
+                        angular = 0;
+                    }
+                };
+                function update_robot() {
+                    robot.move(forward, turn);
+                    setTimeout(update_robot, 500);
+                }
+                update_robot();
+/********************************/
+/* Here is where your code ends */
+/********************************/
+            }
+        </script>
+    </head>
+    <body>
+        <p>This is a template for new turtlebot apps.</p>
+
+    </body>
+</html>

@@ -91,6 +91,78 @@ function load_robot() {
         robot.move(0, 0);
     };
 
+    // Handle key presses
+    function handleKey(key, down) {
+        switch (key) {
+            case 37:
+                // left
+                if (down) {
+                    if (robot.onLeftKeyDown !== undefined) {
+                        robot.onLeftKeyDown();
+                    }
+                } else {
+                    if (robot.onLeftKeyUp !== undefined) {
+                        robot.onLeftKeyUp();
+                    }
+                }
+                break;
+            case 38:
+                // up
+                if (down) {
+                    if (robot.onUpKeyDown !== undefined) {
+                        robot.onUpKeyDown();
+                    }
+                } else {
+                    if (robot.onUpKeyUp !== undefined) {
+                        robot.onUpKeyUp();
+                    }
+                }
+                break;
+            case 39:
+                // right
+                if (down) {
+                    if (robot.onRightKeyDown !== undefined) {
+                        robot.onRightKeyDown();
+                    }
+                } else {
+                    if (robot.onRightKeyUp !== undefined) {
+                        robot.onRightKeyUp();
+                    }
+                }
+                break;
+            case 40:
+                // down
+                if (down) {
+                    if (robot.onKeyDown !== undefined) {
+                        robot.onKeyDown();
+                    }
+                } else {
+                    if (robot.onKeyUp !== undefined) {
+                        robot.onKeyUp();
+                    }
+                }
+                break;
+        }
+        if (key == 37 || key == 38 || key ==39 || key == 40) {
+            if (down) {
+                if (robot.onKeyDown !== undefined) {
+                    robot.onKeyDown(key);
+                }
+            } else {
+                if (robot.onKeyUp !== undefined) {
+                    robot.onKeyUp(key);
+                }
+            }
+        }
+    }
+
+    document.addEventListener('keydown', function (e) {
+        handleKey(e.keyCode, true);
+    }, true);
+    document.addEventListener('keyup', function (e) {
+        handleKey(e.keyCode, false);
+    }, true);
+
     // Run user's code
     if (robot.onload !== undefined) {
         robot.onload();
