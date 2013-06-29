@@ -4,7 +4,7 @@ http://www.ros.org/wiki/mjpeg_server
 
 On the turtlebot:
 - roslaunch turtlebot_bringup minimal.launch
-- roslaunch turtlebot_bringup 3dsensor.launch 
+- roslaunch turtlebot_bringup 3dsensor.launch
 - roslaunch rosbridge_server rosbridge_websocket.launch
 - rosrun mjpeg_server mjpeg_server _port:=9191
 
