@@ -93,6 +93,7 @@ function load_robot() {
 
     // Handle key presses
     function handleKey(key, down) {
+        console.log(key);
         switch (key) {
             case 37:
                 // left
@@ -133,12 +134,12 @@ function load_robot() {
             case 40:
                 // down
                 if (down) {
-                    if (robot.onKeyDown !== undefined) {
-                        robot.onKeyDown();
+                    if (robot.onDownKeyDown !== undefined) {
+                        robot.onDownKeyDown();
                     }
                 } else {
-                    if (robot.onKeyUp !== undefined) {
-                        robot.onKeyUp();
+                    if (robot.onDownKeyUp !== undefined) {
+                        robot.onDownKeyUp();
                     }
                 }
                 break;
