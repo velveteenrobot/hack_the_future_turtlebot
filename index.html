@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Template</title>
+        <!-- Replace localhost with the IP of your turtlebot -->
+        <script src="http://192.168.2.5/js/turtlebot.js"></script>
+        <script type="text/javascript" type="text/javascript">
+            robot.onload = function () {
+/********************************/
+/* Here is where your code goes */
+/********************************/
+                robot.move(-0.5, 0);
+                // Stop after 3000 ms or 3 seconds
+                setTimeout(function () {
+                    robot.stop();
+                }, (1 * 1000));
+/********************************/
+/* Here is where your code ends */
+/********************************/
+            }
+        </script>
+    </head>
+    <body>
+        <p>This is a template for new turtlebot apps.</p>
+
+    </body>
+</html>
